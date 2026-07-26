@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 const CONTACT_DETAILS = [
-  { icon: Mail, label: "support@nexora.gh" },
-  { icon: Phone, label: "+233 30 123 4567" },
+  { icon: Mail, label: "gokahemma1999@gmail.com" },
+  { icon: Phone, label: "0550262636" },
   { icon: MapPin, label: "Accra, Ghana" },
 ];
 

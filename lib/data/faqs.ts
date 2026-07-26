@@ -113,7 +113,7 @@ export const faqs: MockFaq[] = [
   {
     id: "faq-16",
     question: "How do I contact support directly?",
-    answer: "Email support@nexora.gh, call +233 30 123 4567, or use the contact form on our Contact us page.",
+    answer: "Email gokahemma1999@gmail.com, call 0550262636, or use the contact form on our Contact us page.",
     category: "Support",
   },
 ];
