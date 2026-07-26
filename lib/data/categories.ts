@@ -1,0 +1,103 @@
+import type { MockCategory } from "./types";
+
+// Photos are sourced from Unsplash (free for commercial use under the
+// Unsplash License) via the CDN's built-in resize/crop params — no local
+// asset pipeline needed for these representative category shots.
+export const categories: MockCategory[] = [
+  {
+    id: "cat-1",
+    name: "Phones & Electronics",
+    slug: "phones-electronics",
+    icon: "Smartphone",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    productCount: 4210,
+  },
+  {
+    id: "cat-2",
+    name: "Fashion & Apparel",
+    slug: "fashion-apparel",
+    icon: "Shirt",
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+    productCount: 6830,
+  },
+  {
+    id: "cat-3",
+    name: "Home & Kitchen",
+    slug: "home-kitchen",
+    icon: "Sofa",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+    productCount: 3120,
+  },
+  {
+    id: "cat-4",
+    name: "Beauty & Personal Care",
+    slug: "beauty-personal-care",
+    icon: "Sparkles",
+    image: "https://images.unsplash.com/photo-1598528738936-c50861cc75a9",
+    productCount: 2765,
+  },
+  {
+    id: "cat-5",
+    name: "Groceries & Food",
+    slug: "groceries-food",
+    icon: "ShoppingBasket",
+    image: "https://images.unsplash.com/photo-1609842947419-ba4f04d5d60f",
+    productCount: 1980,
+  },
+  {
+    id: "cat-6",
+    name: "Baby & Kids",
+    slug: "baby-kids",
+    icon: "Baby",
+    image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c",
+    productCount: 1540,
+  },
+  {
+    id: "cat-7",
+    name: "Computing",
+    slug: "computing",
+    icon: "Laptop",
+    image: "https://images.unsplash.com/photo-1530893609608-32a9af3aa95c",
+    productCount: 1290,
+  },
+  {
+    id: "cat-8",
+    name: "Sports & Outdoors",
+    slug: "sports-outdoors",
+    icon: "Dumbbell",
+    image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2",
+    productCount: 980,
+  },
+  {
+    id: "cat-9",
+    name: "Automotive",
+    slug: "automotive",
+    icon: "Car",
+    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7",
+    productCount: 760,
+  },
+  {
+    id: "cat-10",
+    name: "Health & Wellness",
+    slug: "health-wellness",
+    icon: "HeartPulse",
+    image: "https://images.unsplash.com/photo-1707129785947-ddc627a8bab9",
+    productCount: 1105,
+  },
+  {
+    id: "cat-11",
+    name: "Books & Stationery",
+    slug: "books-stationery",
+    icon: "BookOpen",
+    image: "https://images.unsplash.com/photo-1599081595476-75608b796d52",
+    productCount: 640,
+  },
+  {
+    id: "cat-12",
+    name: "Arts & Crafts",
+    slug: "arts-crafts",
+    icon: "Palette",
+    image: "https://images.unsplash.com/photo-1506806732259-39c2d0268443",
+    productCount: 410,
+  },
+];

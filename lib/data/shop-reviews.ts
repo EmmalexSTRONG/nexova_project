@@ -1,0 +1,201 @@
+import type { MockShopReview } from "./types";
+
+export const shopReviews: MockShopReview[] = [
+  // Accra Tech Hub
+  {
+    id: "srev-1",
+    shopSlug: "accra-tech-hub",
+    customerName: "Nana K.",
+    location: "Accra",
+    rating: 5,
+    text: "Bought my laptop here and they set it up for me before I left the shop. Six months later, still runs great.",
+    createdAtLabel: "2 weeks ago",
+    seed: 61,
+  },
+  {
+    id: "srev-2",
+    shopSlug: "accra-tech-hub",
+    customerName: "Linda A.",
+    location: "Tema",
+    rating: 5,
+    text: "Fast replies on WhatsApp even before I ordered. They talked me out of a model that wasn't right for what I needed — real trust.",
+    createdAtLabel: "1 month ago",
+    seed: 62,
+  },
+  {
+    id: "srev-3",
+    shopSlug: "accra-tech-hub",
+    customerName: "Desmond O.",
+    location: "Accra",
+    rating: 4,
+    text: "Good prices, and the warranty is honored — had a charger replaced no questions asked. Delivery took a bit longer than promised.",
+    createdAtLabel: "2 months ago",
+    seed: 63,
+  },
+  // Kente & Co.
+  {
+    id: "srev-4",
+    shopSlug: "kente-and-co",
+    customerName: "Kwabena T.",
+    location: "Kumasi",
+    rating: 5,
+    text: "You can tell this is genuinely handwoven, not the mass-produced stuff. The owner even sent photos of my piece on the loom.",
+    createdAtLabel: "3 weeks ago",
+    seed: 64,
+  },
+  {
+    id: "srev-5",
+    shopSlug: "kente-and-co",
+    customerName: "Ama S.",
+    location: "Accra",
+    rating: 5,
+    text: "Ordered a custom size for a wedding and it fit perfectly. Communication was excellent throughout.",
+    createdAtLabel: "1 month ago",
+    seed: 65,
+  },
+  {
+    id: "srev-6",
+    shopSlug: "kente-and-co",
+    customerName: "Ibrahim Y.",
+    location: "Tamale",
+    rating: 5,
+    text: "Shipped all the way to Tamale in three days, well packaged. This is my third order from this shop.",
+    createdAtLabel: "6 weeks ago",
+    seed: 66,
+  },
+  // Home Essentials GH
+  {
+    id: "srev-7",
+    shopSlug: "home-essentials-gh",
+    customerName: "Gifty M.",
+    location: "Tema",
+    rating: 5,
+    text: "The cookware set is genuinely restaurant-quality. Packaging was solid, nothing arrived dented.",
+    createdAtLabel: "10 days ago",
+    seed: 67,
+  },
+  {
+    id: "srev-8",
+    shopSlug: "home-essentials-gh",
+    customerName: "Samuel D.",
+    location: "Accra",
+    rating: 4,
+    text: "Good value overall. One item was out of stock after I ordered, but they refunded that line immediately without me having to ask twice.",
+    createdAtLabel: "1 month ago",
+    seed: 68,
+  },
+  {
+    id: "srev-9",
+    shopSlug: "home-essentials-gh",
+    customerName: "Patricia B.",
+    location: "Kasoa",
+    rating: 5,
+    text: "My go-to shop for anything home-related now. Prices are fair and delivery has always been on time.",
+    createdAtLabel: "2 months ago",
+    seed: 69,
+  },
+  // GlowUp Beauty
+  {
+    id: "srev-10",
+    shopSlug: "glowup-beauty",
+    customerName: "Adjoa B.",
+    location: "Accra",
+    rating: 5,
+    text: "My skin has never been better. The owner replied to my questions about ingredients within minutes — real expertise, not just sales talk.",
+    createdAtLabel: "5 days ago",
+    seed: 70,
+  },
+  {
+    id: "srev-11",
+    shopSlug: "glowup-beauty",
+    customerName: "Esi F.",
+    location: "Cape Coast",
+    rating: 5,
+    text: "The black soap is the real deal, exactly like what my grandmother used to make. Will be a repeat customer.",
+    createdAtLabel: "3 weeks ago",
+    seed: 71,
+  },
+  {
+    id: "srev-12",
+    shopSlug: "glowup-beauty",
+    customerName: "Nii A.",
+    location: "Accra",
+    rating: 4,
+    text: "Bought a gift set for my wife, she loved it. Only wish they had more unscented options.",
+    createdAtLabel: "7 weeks ago",
+    seed: 72,
+  },
+  // Fresh Foods Market
+  {
+    id: "srev-13",
+    shopSlug: "fresh-foods-market",
+    customerName: "Kojo N.",
+    location: "Takoradi",
+    rating: 5,
+    text: "The jollof spice mix tastes like it was ground yesterday, because it was. Ordering again for the holidays.",
+    createdAtLabel: "2 weeks ago",
+    seed: 73,
+  },
+  {
+    id: "srev-14",
+    shopSlug: "fresh-foods-market",
+    customerName: "Abigail R.",
+    location: "Sekondi",
+    rating: 4,
+    text: "Good quality, honest pricing. Just wish delivery days were more flexible — I missed the Monday–Wednesday shipping window once.",
+    createdAtLabel: "1 month ago",
+    seed: 74,
+  },
+  {
+    id: "srev-15",
+    shopSlug: "fresh-foods-market",
+    customerName: "Emmanuel K.",
+    location: "Takoradi",
+    rating: 5,
+    text: "Small local business doing it right. The palm oil is noticeably better than what I get at the regular market.",
+    createdAtLabel: "2 months ago",
+    seed: 75,
+  },
+  // Little Sprouts Kids
+  {
+    id: "srev-16",
+    shopSlug: "little-sprouts-kids",
+    customerName: "Yaa O.",
+    location: "Kumasi",
+    rating: 5,
+    text: "The storybooks survived my toddler's 'testing' and are still in one piece — that says everything about the quality.",
+    createdAtLabel: "1 week ago",
+    seed: 76,
+  },
+  {
+    id: "srev-17",
+    shopSlug: "little-sprouts-kids",
+    customerName: "Bernard A.",
+    location: "Accra",
+    rating: 5,
+    text: "Ordered a birthday gift last minute and they had it delivered the next day with a little card included. Lovely touch.",
+    createdAtLabel: "4 weeks ago",
+    seed: 77,
+  },
+  {
+    id: "srev-18",
+    shopSlug: "little-sprouts-kids",
+    customerName: "Comfort A.",
+    location: "Kumasi",
+    rating: 4,
+    text: "Great toy selection, all safety-checked which matters a lot to me as a parent. Shipping cost felt a little high for a small item.",
+    createdAtLabel: "2 months ago",
+    seed: 78,
+  },
+];
+
+export function getShopReviews(shopSlug: string) {
+  return shopReviews.filter((review) => review.shopSlug === shopSlug);
+}
+
+export function getShopRatingBreakdown(shopSlug: string) {
+  const reviews = getShopReviews(shopSlug);
+  const counts = [5, 4, 3, 2, 1].map((star) => reviews.filter((r) => r.rating === star).length);
+  const total = reviews.length;
+  return { total, counts };
+}

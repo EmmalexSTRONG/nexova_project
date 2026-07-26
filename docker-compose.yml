@@ -1,0 +1,61 @@
+# Local full-stack dev: `docker compose up --build`
+# Production deploys use Vercel (web), Railway (api), and Supabase (db) —
+# see docs/deployment.md. This file is for local parity and isn't used in prod.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nexora
+      POSTGRES_PASSWORD: nexora
+      POSTGRES_DB: nexora
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexora"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "4000:4000"
+    env_file:
+      - backend/.env
+    environment:
+      DATABASE_URL: postgresql://nexora:nexora@postgres:5432/nexora
+      DIRECT_URL: postgresql://nexora:nexora@postgres:5432/nexora
+      CLIENT_URL: http://localhost:3000
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: http://localhost:3000
+        NEXT_PUBLIC_API_URL: http://localhost:4000
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      # Server-side calls (Server Actions) reach the api container directly;
+      # NEXT_PUBLIC_API_URL is already baked into the client bundle via the
+      # build arg above, since the browser runs on the host, not in Docker.
+      API_URL: http://api:4000
+
+volumes:
+  postgres-data:

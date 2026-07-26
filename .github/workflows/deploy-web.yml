@@ -1,0 +1,46 @@
+name: Deploy Web (Vercel)
+
+# The Next.js app lives at the repo root, so Vercel deploys it via its
+# native Git integration with zero project-level config (Root Directory is
+# unset/default) — Vercel builds and deploys automatically on push. This
+# workflow is a pre-deploy gate: it fails fast on a broken build *before*
+# Vercel spends a build minute on it, and blocks merge if branch protection
+# requires it. Skips when a push only touches backend/ or docs/.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "**"
+      - "!backend/**"
+      - "!docs/**"
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - "!backend/**"
+      - "!docs/**"
+
+env:
+  DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
+  NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+  NEXT_PUBLIC_API_URL: "http://localhost:4000"
+  INTERNAL_API_SECRET: "ci-only-internal-secret-not-a-real-secret-32"
+  AUTH_SECRET: "ci-only-auth-secret-not-a-real-secret-32ch"
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:generate
+      - run: pnpm type-check
+      - run: pnpm build

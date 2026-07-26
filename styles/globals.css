@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Nexora palette — golden-yellow primary, charcoal/near-black "ink" bands
+       (header, footer, dark surfaces), clean white/neutral canvas elsewhere. */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 36 87% 54%;
+    --primary-foreground: 28 40% 10%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 36 60% 95%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 5 60% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --sale: 5 60% 54%;
+    --sale-foreground: 0 0% 100%;
+    --success: 152 46% 32%;
+    --success-foreground: 0 0% 100%;
+
+    --ink: 0 0% 7%;
+    --ink-foreground: 0 0% 98%;
+    --ink-muted: 0 0% 65%;
+    --ink-border: 0 0% 18%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 36 87% 54%;
+    --radius: 0.6rem;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 36 87% 58%;
+    --primary-foreground: 28 40% 8%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 36 40% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 5 55% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --sale: 5 60% 58%;
+    --sale-foreground: 0 0% 100%;
+    --success: 152 40% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --ink: 0 0% 4%;
+    --ink-foreground: 0 0% 98%;
+    --ink-muted: 0 0% 65%;
+    --ink-border: 0 0% 18%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 36 87% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Nexora's soft gold gradient accent — buttons, glows, headline highlights. */
+  .gold-gradient {
+    background-image: linear-gradient(135deg, #ffd98c 0%, #f0a93c 45%, #c97f1a 100%);
+  }
+  .gold-gradient-text {
+    background-image: linear-gradient(135deg, #ffd98c 0%, #f0a93c 55%, #d68e22 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Signature "price tag" corner notch — a small angled cut on the top-left
+     corner, evoking a market price tag. Used sparingly: sale badges, the
+     hero accent panel, and section eyebrows. */
+  .tag-notch {
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+  }
+
+  /* Opposite-direction testimonial marquee rows (Reviews section) — each row
+     renders its review list twice back-to-back, then scrolls exactly -50%
+     of its own width so the loop seams invisibly. */
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  .animate-marquee-left {
+    animation: marquee-left 40s linear infinite;
+  }
+  .animate-marquee-right {
+    animation: marquee-right 44s linear infinite;
+  }
+
+  /* Slow ambient pulse behind the Flash Sale glow — urgency without being
+     frantic. */
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3.2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-left,
+    .animate-marquee-right,
+    .animate-pulse-glow {
+      animation: none;
+    }
+  }
+
+  /* Scopes the light/dark color transition to the brief window right after
+     a theme switch (see theme-provider.tsx), rather than an always-on `*`
+     transition — that would quietly slow down every hover/re-render on the
+     site for no benefit. Only color-related properties are listed so this
+     never fights layout or animation performance. */
+  .theme-transitioning,
+  .theme-transitioning *,
+  .theme-transitioning *::before,
+  .theme-transitioning *::after {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow, outline-color !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition-duration: 300ms !important;
+  }
+}

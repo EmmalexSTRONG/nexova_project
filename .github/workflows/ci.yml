@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  # Dummy values so `next build` / `tsc` can run without real secrets — CI
+  # never talks to a live database or third-party API, it only needs the
+  # build/typecheck to succeed. Real secrets live in Vercel/Railway, not here.
+  DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
+  DIRECT_URL: "postgresql://user:pass@localhost:5432/db"
+  CLIENT_URL: "http://localhost:3000"
+  JWT_ACCESS_SECRET: "ci-only-access-secret-not-a-real-secret-32c"
+  INTERNAL_API_SECRET: "ci-only-internal-secret-not-a-real-secret-32"
+  SMTP_HOST: "localhost"
+  SMTP_USER: "ci"
+  SMTP_PASSWORD: "ci"
+  EMAIL_FROM: "Nexora <no-reply@nexora.test>"
+  CLOUDINARY_CLOUD_NAME: "ci"
+  CLOUDINARY_API_KEY: "ci"
+  CLOUDINARY_API_SECRET: "ci"
+  PAYSTACK_SECRET_KEY: "ci"
+  FLUTTERWAVE_SECRET_KEY: "ci"
+  FLUTTERWAVE_WEBHOOK_HASH: "ci"
+  OPENAI_API_KEY: "ci"
+  TWILIO_ACCOUNT_SID: "ci"
+  TWILIO_AUTH_TOKEN: "ci"
+  TWILIO_SMS_FROM: "+15005550006"
+  TWILIO_WHATSAPP_FROM: "whatsapp:+15005550006"
+  VAPID_PUBLIC_KEY: "ci"
+  VAPID_PRIVATE_KEY: "ci"
+  NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+  NEXT_PUBLIC_API_URL: "http://localhost:4000"
+  AUTH_SECRET: "ci-only-auth-secret-not-a-real-secret-32ch"
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generate Prisma Client
+        run: pnpm db:generate
+      - run: pnpm lint
+      - run: pnpm type-check
+      - run: pnpm build
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build api image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: backend/Dockerfile
+          push: false
+      - name: Build web image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: false
+          build-args: |
+            NEXT_PUBLIC_APP_URL=http://localhost:3000
+            NEXT_PUBLIC_API_URL=http://localhost:4000

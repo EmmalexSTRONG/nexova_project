@@ -1,0 +1,58 @@
+name: Deploy API (Railway)
+
+# backend deploys via Railway's native Git integration (Dockerfile at
+# backend/Dockerfile, build context = repo root) — Railway builds and
+# deploys automatically on push. This workflow is a pre-deploy gate: it
+# fails fast on a broken build *before* Railway spends a build on it, and
+# blocks merge if branch protection requires it.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "backend/**"
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+
+env:
+  DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
+  DIRECT_URL: "postgresql://user:pass@localhost:5432/db"
+  CLIENT_URL: "http://localhost:3000"
+  JWT_ACCESS_SECRET: "ci-only-access-secret-not-a-real-secret-32c"
+  INTERNAL_API_SECRET: "ci-only-internal-secret-not-a-real-secret-32"
+  SMTP_HOST: "localhost"
+  SMTP_USER: "ci"
+  SMTP_PASSWORD: "ci"
+  EMAIL_FROM: "Nexora <no-reply@nexora.test>"
+  CLOUDINARY_CLOUD_NAME: "ci"
+  CLOUDINARY_API_KEY: "ci"
+  CLOUDINARY_API_SECRET: "ci"
+  PAYSTACK_SECRET_KEY: "ci"
+  FLUTTERWAVE_SECRET_KEY: "ci"
+  FLUTTERWAVE_WEBHOOK_HASH: "ci"
+  OPENAI_API_KEY: "ci"
+  TWILIO_ACCOUNT_SID: "ci"
+  TWILIO_AUTH_TOKEN: "ci"
+  TWILIO_SMS_FROM: "+15005550006"
+  TWILIO_WHATSAPP_FROM: "whatsapp:+15005550006"
+  VAPID_PUBLIC_KEY: "ci"
+  VAPID_PRIVATE_KEY: "ci"
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:generate
+      - run: pnpm --filter backend type-check
+      - run: pnpm --filter backend build

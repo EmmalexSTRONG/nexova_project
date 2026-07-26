@@ -1,0 +1,58 @@
+import type { MockReview } from "./types";
+
+export const reviews: MockReview[] = [
+  {
+    id: "rev-1",
+    customerName: "Abena O.",
+    location: "Accra",
+    rating: 5,
+    text: "Ordered a phone on Monday and it was at my door by Wednesday. Packaging was solid and the vendor followed up to make sure everything worked.",
+    productName: "Samsung Galaxy A15",
+    seed: 41,
+  },
+  {
+    id: "rev-2",
+    customerName: "Kwabena T.",
+    location: "Kumasi",
+    rating: 5,
+    text: "The Kente tote bag is even better in person. You can tell it's genuinely handwoven, not the mass-produced stuff. Already ordered a second one.",
+    productName: "Handwoven Kente Tote Bag",
+    seed: 42,
+  },
+  {
+    id: "rev-3",
+    customerName: "Efua M.",
+    location: "Takoradi",
+    rating: 4,
+    text: "Good prices and the flash sales are legit — I saved almost 30% on a cookware set I'd been eyeing for months. Delivery took a day longer than quoted.",
+    productName: "Ceramic Dinnerware Set",
+    seed: 43,
+  },
+  {
+    id: "rev-4",
+    customerName: "Yaw D.",
+    location: "Tamale",
+    rating: 5,
+    text: "Booked a laptop repair through the services tab and it was done same day. Being able to see the technician's rating before booking made the decision easy.",
+    productName: "Laptop Repair & Diagnostics",
+    seed: 44,
+  },
+  {
+    id: "rev-5",
+    customerName: "Adjoa B.",
+    location: "Accra",
+    rating: 5,
+    text: "My go-to for skincare now. The shea butter cream smells amazing and doesn't feel greasy. Vendor replies to messages within minutes.",
+    productName: "Shea Butter Body Cream",
+    seed: 45,
+  },
+  {
+    id: "rev-6",
+    customerName: "Kofi A.",
+    location: "Tema",
+    rating: 4,
+    text: "Wide selection and checkout was painless. Would like more payment options at checkout, but overall a smooth experience from browsing to delivery.",
+    productName: "14\" Laptop 8GB/256GB",
+    seed: 46,
+  },
+];

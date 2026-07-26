@@ -1,0 +1,3 @@
+Order number,Date placed,Customer,Email,Status,Payment method,Payment status,Total,Currency
+MKT-20260713-OML6O,2026-07-13T21:13:40.172Z,Ama Boateng,ama.boateng@example.com,Out for delivery,Cash,PENDING,1914,GHS
+MKT-20260713-O18AB,2026-07-13T19:59:02.288Z,Kofi Mensah,kofi.mensah@example.com,Cancelled,Cash,PENDING,1899,GHS
