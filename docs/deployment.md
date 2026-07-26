@@ -89,7 +89,7 @@ To make CI a required check: GitHub repo → Settings → Branches → branch pr
 ## 4. Vercel deployment (frontend)
 
 1. [vercel.com/new](https://vercel.com/new) → import this repo.
-2. **Root Directory**: leave it unset (default = repo root). The Next.js app's own `package.json` lives at the repo root specifically so Vercel auto-detects it with zero project configuration — nothing to pick in the monorepo picker. The committed root `vercel.json` only adds an `ignoreCommand` so Vercel skips rebuilding when a push only touches `backend/` or `docs/`.
+2. **Root Directory**: leave it unset (default = repo root). The Next.js app's own `package.json` lives at the repo root specifically so Vercel auto-detects it with zero project configuration — nothing to pick in the monorepo picker. The committed root `vercel.json` just pins the framework preset.
 3. Framework preset: Next.js (auto-detected).
 4. Add every env var from §1's "Vercel project env vars" table under Project Settings → Environment Variables (Production + Preview).
 5. Deploy. Vercel auto-deploys on every push to `main` (production) and every PR (preview).
