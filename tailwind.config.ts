@@ -60,8 +60,26 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
-        sans: ["var(--font-body)", "sans-serif"],
+        display: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
         mono: ["var(--font-mono)", "monospace"],
       },
       borderRadius: {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
-import { fontBody, fontDisplay, fontMono } from "@/lib/fonts";
+import { fontMono } from "@/lib/fonts";
 import { CartProvider } from "@/lib/cart/cart-context";
 import { ChatWidget } from "@/components/chat/chat-widget-dynamic";
 import { ThemeProvider } from "@/lib/theme/theme-provider";
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(fontDisplay.variable, fontBody.variable, fontMono.variable)}
+      className={cn(fontMono.variable)}
     >
       <head>
         <ThemeScript />
